@@ -1,4 +1,3 @@
-import fetch, { Request, Response } from "node-fetch"; 
 import { createBareServer } from "@tomphttp/bare-server-node";
 import express from "express";
 import { createServer } from "node:http";
@@ -10,14 +9,17 @@ const bare = createBareServer("/bare/");
 const app = express();
 const publicPath = "public";
 
+// Serve static files
 app.use(express.static(publicPath));
 app.use("/static/uv/", express.static(uvPath));
 
+// Custom 404 fallback
 app.use((req, res) => {
   res.status(404);
   res.sendFile(join(publicPath, "404.html"));
 });
 
+// Create and attach bare + express to the server
 const server = createServer();
 
 server.on("request", (req, res) => {
@@ -36,7 +38,8 @@ server.on("upgrade", (req, socket, head) => {
   }
 });
 
-let port = parseInt(process.env.PORT || "3000");
+// Start server
+const port = parseInt(process.env.PORT || "3000");
 
 server.listen({ port }, () => {
   const address = server.address();
@@ -50,6 +53,7 @@ server.listen({ port }, () => {
   );
 });
 
+// Graceful shutdown
 process.on("SIGINT", shutdown);
 process.on("SIGTERM", shutdown);
 
