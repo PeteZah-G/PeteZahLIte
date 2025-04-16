@@ -1,4 +1,15 @@
+
 {
+  "name": "PeteZah",
+  "version": "1.0.0",
+  "description": "Game on!  Access the internet unretricted!",
+  "engines": {
+    "npm": ">=9.0.0",
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
   "dependencies": {
     "@mercuryworkshop/bare-as-module3": "^2.2.5",
     "@mercuryworkshop/bare-mux": "^2.1.7",
