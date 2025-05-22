@@ -2,7 +2,7 @@
 
 self.__uv$config = {
   prefix: "/petezah/petezah/",
-  bare: "/bare/",
+  bare: "https://petezahserver.adidasnmdcitysock.com/seal/",
   encodeUrl: Ultraviolet.codec.xor.encode,
   decodeUrl: Ultraviolet.codec.xor.decode,
   handler: "/petezah/handler.js",
